@@ -48,9 +48,10 @@ Refrences
 rfe: String
 et: which error do you want to raise
     Values:
-            0 = File Not Found Error
-            1 = File Exists Error
-            2 = Not an Error but a Warning
+            0 = File Not Found Error (ERROR)
+            1 = File Exists Error (ERROR
+            2 = Not an Error but a Warning (WARNING)
+            3 = EccoPY_RenderTypeInvaild_Error (ERROR)
 """
 def RCE(rfe: str, et: int):
     error_type = et
@@ -62,9 +63,13 @@ def RCE(rfe: str, et: int):
         raise FileExistsError
     elif error_type == 2: # NEBW
         sp(f"WARNING: {rfe}")
+    elif error_type == 3: # EP_RTI_E
+        sp(f"ERROR: {rfe}")
+        raise ValueError
     else:
         sp("Can't go higher than 1 at the moment...\n Sorry About that :(")
         raise ValueError
+
 
 
 def Play(target: dict,
