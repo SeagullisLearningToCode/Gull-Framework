@@ -1,8 +1,10 @@
 """
 This file stores very simple functions with the sole purpose of de-bloating the Main.py file
 """
-import os.path
+import os
+import sys
 import pygame
+import getpass as gp
 
 load = pygame.mixer.music
 
@@ -93,3 +95,74 @@ def QuesFromDict(target: dict): # takes the values from the target and qeue
     for i in names:
         Que(names, i)
         print(names, i)
+
+def EccoPyDevLogStuff(filepath: str = "/Documents/SIS/EccoPY/LOGS/", # Possibly returns as error
+                      textfile: str = "DeveloperLog", # Filename.ext
+                      file_type: str = ".log", # Required
+                      lmt_filesize: float = 0x164210, # EXPERIMENTAL
+                      isThisEnabled: bool = True): # Skip function
+    # Init/
+    #   Args/
+    #       Vars/
+    #           STR/
+    gun = gp.getuser()
+    fp = filepath
+    tf = textfile
+    #           INT/
+    #           FLOATS/
+    lfs = lmt_filesize
+    # Abs/
+    #   Args/
+    if os.path.exists(f"/Users/{gun}{fp}") is False:
+        os.makedirs(
+            f"/Users/{gun}{fp}"
+        )
+    else:
+        pass
+    if os.path.exists(f"/Users/{gun}{fp}{tf}{file_type}") is False:
+        sys.stderr = open(f"/Users/{gun}{fp}{tf}", "w+")
+    else:
+        pass
+    if isThisEnabled == True:
+        if not os.path.getsize(f"/Users/{gun}{fp}{tf}") >= lfs:
+            sys.stdout = open(f"/Users/{gun}{fp}{tf}", "w+")
+            if os.path.getsize(f"/Users/{gun}{fp}/{tf}") >= lfs:
+                sys.stdout.close()
+    else:
+        pass
+
+def EccoPyDevLogStuff_ERRORS(filepath: str = "/Documents/SIS/EccoPY/LOGS/", # Possibly returns as error
+                             textfile: str = "DeveloperLog", # Filename.ext
+                             file_type: str = ".log",
+                             lmt_filesize: float = 0x1684210, # EXPERIMENTAL
+                             isThisEnabled: bool = True): # Skip function
+    # Init/
+    #   Args/
+    #       Vars/
+    #           STR/
+    gun = gp.getuser()
+    fp = filepath
+    tf = textfile
+    #           INT/
+    #           FLOATS/
+    lfs = lmt_filesize
+    # Abs/
+    #   Args/
+    if os.path.exists(f"/Users/{gun}{fp}") is False:
+        os.makedirs(
+            f"/Users/{gun}{fp}"
+        )
+    else:
+        pass
+    if os.path.exists(f"/Users/{gun}{fp}{tf}-err{file_type}") is False:
+        sys.stderr = open(f"/Users/{gun}{fp}{tf}-err{file_type}", "w+")
+    else:
+        pass
+    if isThisEnabled == True:
+        if not os.path.getsize(f"/Users/{gun}{fp}{tf}-err{file_type}") >= lfs:
+            sys.stderr = open(f"/Users/{gun}{fp}{tf}-err{file_type}", "w+")
+            if os.path.getsize(f"/Users/{gun}{fp}/{tf}-err{file_type}") >= lfs:
+                sys.stderr.write("Done Writing...")
+                sys.stderr.close()
+    else:
+        pass
