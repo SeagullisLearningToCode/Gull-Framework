@@ -1,12 +1,22 @@
 """
 This file stores very simple functions with the sole purpose of de-bloating the Main.py file
 """
+
 import os
 import sys
 import pygame
 import getpass as gp
+from datetime import *
 
 load = pygame.mixer.music
+
+# Today's Date
+td = date.today()
+# print(type(td)) # Get td's return type
+td_c_s = str(td) # Converts the current date into a String
+td_c_s_yo = td_c_s[0:4] # Get year only
+# Today's Time
+tt = datetime.now()
 
 # p function
 # reason: I am too lazy to keep using print("passed") so much times so I did this to make things easier on my self
@@ -15,21 +25,8 @@ def p():
 
 # sp function
 # reason: same as the p function but made it faster to make a print statement by using a few characters
-def sp(t: str = "passed",
-       convert: int = 0): # This is to prevent Warnings/Errors
-    if convert == 0: # None also default
-        print(t)
-    elif convert == 1: # Int --> Str
-        if t is float or int:
-            print(str(t))
-    elif convert == 2: # Bool --> Str
-        if t is bool:
-            print(str(t))
-    elif convert == 3: # List --> Str
-        if t is list:
-            print(str(t))
-    else:
-        return print(t)
+def sp(t="passed"): # This is to prevent Warnings/Errors
+    print(t)
 
 # sps function
 # Reason: easier and shorter
@@ -71,7 +68,6 @@ def RCE(rfe: str, et: int):
     else:
         sp("Can't go higher than 1 at the moment...\n Sorry About that :(")
         raise ValueError
-
 
 
 def Play(target: dict,
