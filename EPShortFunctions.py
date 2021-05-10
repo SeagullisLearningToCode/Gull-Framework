@@ -90,7 +90,7 @@ def QuesFromDict(target: dict): # takes the values from the target and qeue
     names = target
     for i in names:
         Que(names, i)
-        print(names, i)
+        #print(names, i)
 
 def EccoPyDevLogStuff(filepath: str = "/Documents/SIS/EccoPY/LOGS/", # Possibly returns as error
                       textfile: str = "DeveloperLog", # Filename.ext
@@ -162,3 +162,29 @@ def EccoPyDevLogStuff_ERRORS(filepath: str = "/Documents/SIS/EccoPY/LOGS/", # Po
                 sys.stderr.close()
     else:
         pass
+
+def load_map(filepath):
+    f = open(filepath, "r")
+    data = f.read()
+    f.close()
+    data = data.split('\n')
+    gmap = []
+    for bit in data:
+        gmap.append(list(bit))
+    return gmap
+
+
+def load_text(filepath, **kwargs):
+    seperator = kwargs.get("seperator", "\n")
+    f = open(filepath, "r")
+    data = f.read()
+    f.close()  # prevents data leakage
+    if seperator is None:
+        pass
+    else:
+        data = data.split(seperator)
+    data = data.split('-')
+    gtx = []
+    for bit in data:
+        gtx.append(list(bit))
+    return gtx
