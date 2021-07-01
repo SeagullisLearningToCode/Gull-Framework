@@ -1,5 +1,35 @@
 """
+████████████████████████████████████████████████████████████████████▓░░░░░░░░░░░░░░░░░░░░░
+█████████████████████▒░▒▒▒▒▒▒▓▓█████████████████████████████████████▓░░░░░░░░░░░░░░░░░░░░░
+███████████████▓▓▒▒░░░░░░░░░░░░░░░░░░░▒▓▓███████████████████████████▒░░░░░░░░░░░░░░░░░░░░░
+████████████▓▒░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░▒▒█████████████████████▓▓░░░░░░░░░░░░░░░░░░░░░
+██████████▓░░░░░░░░░░░░░░░░░░▒▒░░▒▒░░▒▒▒░▒░░░░░░░▒██████████████████▓▒░░░░░░░░░░░░░░░░░░░░
+█████████▒░░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░▒████████████████▓▒░░░░░░░░░░░░░░░░░░░░
+███████▒░░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▒██████████████▓▒░░░░░░░░░░░░░░░░░░░░
+████▓░░░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒▒▒░▒███████████▓▓▓░░░░░░░░░░░░░░░░░░░░
+████▓▒░░░░░░▒░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████▓▓▓▒▒▒▒▒▒▒░░▓███████████▓░░░░░░░░░░░░░░░░░░░░
+████▒░░░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████████▓▒▒▒▒▒▒▒▒▒░░████████▓█▓░░░░░░░░░░░░░░░░░░░░
+█▓▒▒▒░░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓██████▓▓▒▒▒▒▒▒▒▒▒▒▒░▒▓██████▓▒░░░░░░░░░░░░░░░░░░░░
+█▓▓▓▒░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░▒▒████▒░░░░░░░░░░░░░░░░░░░░
+███▓░░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░▓▓▓░░░░░░░░░░░░░░░░░░░░
+███▒░░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░░░░░░░
+██▒░░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░░
+██▒░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓████████▓▓▓▓▒▒▒▒▒▒▒▒▒▒▒░░░░░░
+██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓█▓█▓▓▓▓▓▒▒▒▒▒▒░░░░
+█▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓█▓██████████▓▓▒▒▒▒▒░░░
+▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓█████████▓▓▓▓████████████▓▒▒▒░░
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████████████████▓░▒▒▓███████████▓▒▒░
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓██████████████████████░░░░░░░▒▒▒▓▓▒▒▓▒▒▒░
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓███████████████████████▓░░░░░░░░░░░░░░░░░▒░
+▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█████████████████████▓▓▓▒░░░░░░░░░░░░░░░░░░░
+ __                     ___  __              ___       __   __
+/ _` |  | |    |       |__  |__)  /\   |\/| |__  |  | /  \ |__) |__/
+\__> \__/ |___ |___    |    |  \ /~~\  |  | |___ |/\| \__/ |  \ |  \
+                                                          Version: 1
+
+
 This file stores very simple functions with the sole purpose of de-bloating the Main.py file
+This file is also makes stating certain things faster and possibly easier.
 """
 
 import os
@@ -7,11 +37,14 @@ import sys
 import pygame
 import getpass as gp
 from datetime import *
+from random import *
+from configparser import *
 
 load = pygame.mixer.music
 
 # Today's Date
 td = date.today()
+
 # print(type(td)) # Get td's return type
 td_c_s = str(td) # Converts the current date into a String
 td_c_s_yo = td_c_s[0:4] # Get year only
@@ -35,11 +68,9 @@ def sps(t: str):
 
 # Get Presence
 # reason: shorten it up a bit with the os.path.exists
-getpres = os.path.exists
 def GetPresSpec(file: str):
     getpres = os.path.exists
-    sp(t=getpres(file),
-       convert=2)
+    sp(f"{getpres(file)}")
 # Raise Custom Error Function (RCEF)
 """
 Refrences
@@ -69,7 +100,6 @@ def RCE(rfe: str, et: int):
         sp("Can't go higher than 1 at the moment...\n Sorry About that :(")
         raise ValueError
 
-
 def Play(target: dict,
          name: str,
          loop: int):  # Plays the file which seems to work
@@ -79,12 +109,10 @@ def Play(target: dict,
         raise ValueError
     load.play(loop)
 
-
 def Que(target: dict,
         name: str):
     filename = target.get(name)
     load.queue(filename)
-
 
 def QuesFromDict(target: dict): # takes the values from the target and qeue
     names = target
@@ -113,19 +141,13 @@ def EccoPyDevLogStuff(filepath: str = "/Documents/SIS/EccoPY/LOGS/", # Possibly 
         os.makedirs(
             f"/Users/{gun}{fp}"
         )
-    else:
-        pass
     if os.path.exists(f"/Users/{gun}{fp}{tf}{file_type}") is False:
         sys.stderr = open(f"/Users/{gun}{fp}{tf}", "w+")
-    else:
-        pass
     if isThisEnabled == True:
         if not os.path.getsize(f"/Users/{gun}{fp}{tf}") >= lfs:
             sys.stdout = open(f"/Users/{gun}{fp}{tf}", "w+")
-            if os.path.getsize(f"/Users/{gun}{fp}/{tf}") >= lfs:
-                sys.stdout.close()
-    else:
-        pass
+        if os.path.getsize(f"/Users/{gun}{fp}/{tf}") >= lfs:
+            sys.stdout.close()
 
 def EccoPyDevLogStuff_ERRORS(filepath: str = "/Documents/SIS/EccoPY/LOGS/", # Possibly returns as error
                              textfile: str = "DeveloperLog", # Filename.ext
@@ -144,24 +166,35 @@ def EccoPyDevLogStuff_ERRORS(filepath: str = "/Documents/SIS/EccoPY/LOGS/", # Po
     lfs = lmt_filesize
     # Abs/
     #   Args/
-    if os.path.exists(f"/Users/{gun}{fp}") is False:
+    if os.path.exists(f"/Users/{gun}{fp}") is False: # /Users/*USERNAME*/Documents/SIS/EccoPY/LOGS/
         os.makedirs(
             f"/Users/{gun}{fp}"
         )
-    else:
-        pass
     if os.path.exists(f"/Users/{gun}{fp}{tf}-err{file_type}") is False:
         sys.stderr = open(f"/Users/{gun}{fp}{tf}-err{file_type}", "w+")
-    else:
-        pass
     if isThisEnabled == True:
         if not os.path.getsize(f"/Users/{gun}{fp}{tf}-err{file_type}") >= lfs:
             sys.stderr = open(f"/Users/{gun}{fp}{tf}-err{file_type}", "w+")
             if os.path.getsize(f"/Users/{gun}{fp}/{tf}-err{file_type}") >= lfs:
                 sys.stderr.write("Done Writing...")
                 sys.stderr.close()
-    else:
-        pass
+
+def EccoPyPlayerFile_IDEMF(dir = "/Documents/Seagulls/EccoPY/",
+                           name = "Settings"):
+    # Init/
+    #   Args/
+    #       Vars/
+    #           STR/
+    gun = gp.getuser()
+    subdir = f"{gun}/EP_S/"
+    getdir = f"/Users/{gun}{dir}{subdir}"
+    # Abs/
+    #   Args/
+    if os.path.exists(getdir) is False:
+        os.makedirs(getdir)
+    elif os.path.exists(f"{getdir}/{name}.ini") is False:
+        newfile = open(f"{getdir}/{name}.ini", "w+") # Creates new file
+        newfile.close()
 
 def load_map(filepath):
     f = open(filepath, "r")
@@ -172,19 +205,3 @@ def load_map(filepath):
     for bit in data:
         gmap.append(list(bit))
     return gmap
-
-
-def load_text(filepath, **kwargs):
-    seperator = kwargs.get("seperator", "\n")
-    f = open(filepath, "r")
-    data = f.read()
-    f.close()  # prevents data leakage
-    if seperator is None:
-        pass
-    else:
-        data = data.split(seperator)
-    data = data.split('-')
-    gtx = []
-    for bit in data:
-        gtx.append(list(bit))
-    return gtx
