@@ -243,7 +243,7 @@ class GF_INIT(object):
         #   Args/
         #       Vars/
         #           Booleans/
-        self.enable_assembly_mode = (assembly_mode)
+        self.enable_assembly_mode = (assembly_mode) # Simular to assembly but emulates it
         #   I/
         if self.enable_assembly_mode == True:
             self.m = GF_MAPPING()  # Deals with mapping
