@@ -23,7 +23,7 @@ print(" --------------\n| Hello, Gull! |\n --------------")
 ```
 making a print box in the Gull Framework
 ```python
-makebox("Hello, Gull!")
+makeBox("Hello, Gull!")
 ```
 
 Documentation is also in the code itself
