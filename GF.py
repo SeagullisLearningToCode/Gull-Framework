@@ -1,8 +1,8 @@
 """
  __                     ___  __              ___       __   __
-/ _` |  | |    |       |__  |__)  /\   |\/| |__  |  | /  \ |__) |__/
-\__> \__/ |___ |___    |    |  \ /~~\  |  | |___ |/\| \__/ |  \ |  \
-                                                    Version: 1.016a
+/ _` |  | |    |       |__  |__)  /\   |\/| |__  |  | /  \ |__) |__/   / -- --
+\__> \__/ |___ |___    |    |  \ /~~\  |  | |___ |/\| \__/ |  \ |  \  /    ______
+                                                    Version: 1.016d
 
 This file stores very simple functions with the sole purpose of de-bloating the Main.py file (used to be)
 This file is also makes stating certain things faster and possibly easier.
@@ -21,6 +21,8 @@ from random import *
 from configparser import *
 
 # ;VARIABLES-------------------------------------------------------------------------------------------------------------------
+# ;GULL FRAMEWORK
+GF_VERSION = "1.016d"
 # ;Pygame
 load = mixer.music
 
@@ -36,66 +38,31 @@ GF_XTN_FOLDER_PATH = f"{GF_FILE_PATH}/EXT/"
 
 # ;FUNCTIONS-------------------------------------------------------------------------------------------------------------------
 
-def p(t="passed"):
+# ;============================================================================================================================
+# ;PRINT BASED FUNCTIONS
+# ;============================================================================================================================
+
+def p(t="passed", **kwargs):
     """
     Print
     Make print statements faster than python's print("Hello World")
 
+    kwargs
+    --------------------
+    condition(Bool) Def: None
+            |_____Prints statement if refrenced Boolean is True
+
     Example: p("Hello World")
     Output: Hello World
     """
+    # KWARGS
+    condition = kwargs.get("cond", None)
     # CODE
-    print(t)
-
-
-def ptry(cmd, errNum):
-    """
-    PrintTry is a conditional function that use try and except conditionals
-    :param cmd:
-    :param errNum:
-    :return:
-    """
-    # sa
-    en = errNum
-    # dict
-    errStrs = {
-        0: {
-            0: "PermissionError",
-            1: "OSError",
-            2: "RuntimeError"
-        },
-        1: {
-            0: "notAbleToCreateFolderOrFileAtGivenDir",
-            1: "cantRunProcessDueToNotBeingInstalled",
-            2: "pythonErr",
-        },
-        2: {
-            0: f"GULL FRAMEWORK: <{tt}> An error has occured (err code: {errNum})\n\tPermission to this '{cmd}' has been denied",
-            1: f"GULL FRAMEWORK: <{tt}> An error has occured (err code: {errNum})\n\tRunning '{cmd}' returned as 'Unknown Command'",
-            2: f"GULL FRAMEWORK: <{tt}> An error has occured (err code: {errNum})\n\tAccess to this path '{cmd}' doesn't exist",
-            3: f"GULL FRAMEWORK: <{tt}> An error has occured (err code: {errNum}\n\tPython has ran into an error\n\t\tPython: {cmd}"
-        }
-    }
-    # code
-    def runt(str1,  # ;Command
-             errType,  # ;Error Type
-             var1,  # ;Variable
-             errNumRef  # ;String From Dict Refrence (but takes int)
-             ):
-        e = en
-        # code
-        exec(f"if e == {errNumRef}:\n\ttry:\n\t\t{str1}\n\texcept {errType} as {var1}:\n\t\tp(f'{{errStrs[2][errNumRef]}}{{var1}}')\n\t\tsys.exit(2)")
-        # ;if e == errNumRef:
-        # ; try:
-        # ;     str1
-        # ; execpt errType as var1:
-        # ;     p('{errStrs[2][errNumRef]}{var1}')
-        # ;     sys.exit(2)
-
-    runt(cmd, errStrs[0][0], errStrs[1][0], 0)  # ;Permission Error
-    runt(f"subprocess.run({cmd}, shell=True)", errStrs[0][1], errStrs[1][1], 1)  # ;Subprocess Unknown Error
-    runt(cmd, errStrs[0][2], errStrs[1][2], 3) # ;Python Error
-
+    if condition is not None and type(condition) is bool:
+        if condition is True:
+            print(t)
+    else:
+        print(t)
 
 def sps(t: str, **sargs):
     """
@@ -164,7 +131,7 @@ def sps(t: str, **sargs):
     else:
         p(f"passed {t}")
 
-def makeDebugBox(what: str, **mdbk):
+def makeBox(what: str, **mdbk):
     '''
     Make a printable box with text inside of it
 
@@ -348,6 +315,9 @@ def getAllVars(**kwargs):
             flp(vars(), add='<addfirst>\t')
             p(easSTDOUTDict['vars'][1])
 
+# ;============================================================================================================================
+# ;FILE BASED FUNCTIONS
+# ;============================================================================================================================
 
 def getPresSpec(file: str, **kwargs):
     """
@@ -361,7 +331,7 @@ def getPresSpec(file: str, **kwargs):
     GPS_CREATE_FOLDER(Bool) Def: False
                 |_________True = Create folder if it doesn't exist
                 |_________False = don't create if doesn't exist
-                
+
 
     Returns: None by default
     """
@@ -384,6 +354,53 @@ def getPresSpec(file: str, **kwargs):
 
     return getpres(file)
 
+def ptry(cmd, errNum):
+    """
+    PrintTry is a conditional function that use try and except conditionals
+    :param cmd:
+    :param errNum:
+    :return:
+    """
+    # sa
+    en = errNum
+    # dict
+    errStrs = {
+        0: {
+            0: "PermissionError",
+            1: "OSError",
+            2: "RuntimeError"
+        },
+        1: {
+            0: "notAbleToCreateFolderOrFileAtGivenDir",
+            1: "cantRunProcessDueToNotBeingInstalled",
+            2: "pythonErr",
+        },
+        2: {
+            0: f"GULL FRAMEWORK: <{tt}> An error has occured (err code: {errNum})\n\tPermission to this '{cmd}' has been denied",
+            1: f"GULL FRAMEWORK: <{tt}> An error has occured (err code: {errNum})\n\tRunning '{cmd}' returned as 'Unknown Command'",
+            2: f"GULL FRAMEWORK: <{tt}> An error has occured (err code: {errNum})\n\tAccess to this path '{cmd}' doesn't exist",
+            3: f"GULL FRAMEWORK: <{tt}> An error has occured (err code: {errNum}\n\tPython has ran into an error\n\t\tPython: {cmd}"
+        }
+    }
+    # code
+    def runt(str1,  # ;Command
+             errType,  # ;Error Type
+             var1,  # ;Variable
+             errNumRef  # ;String From Dict Refrence (but takes int)
+             ):
+        e = en
+        # code
+        exec(f"if e == {errNumRef}:\n\ttry:\n\t\t{str1}\n\texcept {errType} as {var1}:\n\t\tp(f'{{errStrs[2][errNumRef]}}{{var1}}')\n\t\tsys.exit(2)")
+        # ;if e == errNumRef:
+        # ; try:
+        # ;     str1
+        # ; execpt errType as var1:
+        # ;     p('{errStrs[2][errNumRef]}{var1}')
+        # ;     sys.exit(2)
+
+    runt(cmd, errStrs[0][0], errStrs[1][0], 0)  # ;Permission Error
+    runt(f"subprocess.run({cmd}, shell=True)", errStrs[0][1], errStrs[1][1], 1)  # ;Subprocess Unknown Error
+    runt(cmd, errStrs[0][2], errStrs[1][2], 3) # ;Python Error
 
 def hexValFromFile(dirname: str,
                    filename: str,
@@ -456,7 +473,7 @@ def hexValFromFile(dirname: str,
 def imgDict(targetpath: str, **kwargs):
     """
     Takes the files within a folder and translate the paths to a dictionary (targetname --> returnname)
-    
+
     kwargs
     -----------------------------------------------
     v_names(Bool) Def: False
@@ -490,7 +507,7 @@ def imgDict(targetpath: str, **kwargs):
 def getDirectory(targetpath: str, **kwargs):
     """
     Takes the files within a folder and translate the paths to a dictionary (targetname --> returnname)
-    
+
     kwargs
     -----------------------------------
     GD_FILTER(str or list of strings) Def: None
@@ -569,11 +586,14 @@ def getDirectory(targetpath: str, **kwargs):
     del mi, nmi # ;These aren't needed anymore when the loop is done
     return d
 
+# ;============================================================================================================================
+# ;LIST BASED FUNCTIONS
+# ;============================================================================================================================
 
 def merge(target_list, **kwargs):
     """
     Takes a nested list into a single list
-    
+
     kwargs
     --------------------------------------
     show_result(Bool) Def: False
@@ -604,7 +624,7 @@ def merge(target_list, **kwargs):
 def remDupesLst(target, **kwargs):
     """
     Removes any duplicates from a list (making unique ones stay)
-    
+
     kwargs
     ----------------------------------
     print_result(Bool) Def: False
@@ -612,10 +632,10 @@ def remDupesLst(target, **kwargs):
                 |_____False = pass
     sender(list) Def: None
         |______sends target value to another list
-    
-    :param target: 
-    :param kwargs: 
-    :return: 
+
+    :param target:
+    :param kwargs:
+    :return:
     """
     # LIST
     new_list = []
@@ -641,17 +661,17 @@ def remDupesLst(target, **kwargs):
 def genIterList(amount, **kwargs):
     '''
     Generates an iteration list mainly comprised of 0's of course
-    
+
     kwargs
     --------------------------
     GIL_PRINTRESULT(Bool) Def: False
                 |_______True = prints result
                 |_______False = pass
     GIL_LISTNAME(list) Def: None
-    
-    :param amount: 
-    :param kwargs: 
-    :return: 
+
+    :param amount:
+    :param kwargs:
+    :return:
     '''
     # KWARGS
     GIL_PRINTRESULT = kwargs.get('print_result', False)
@@ -676,10 +696,14 @@ def genIterList(amount, **kwargs):
             p(f"gen_iter_list <print_result>: {l}")
         return l
 
+# ;============================================================================================================================
+# ;RANDOMIZATION BASED FUNCTIONS
+# ;============================================================================================================================
+
 def boolRandom(**brargs):
     """
     Generates a list of random boolean values and choses it which index which will return with bool.
-    
+
     kwargs
     ------------------------------
     generateBools(int) Def: 2
@@ -723,16 +747,20 @@ def boolRandom(**brargs):
 
     return chose
 
+# ;============================================================================================================================
+# ;SYSTEM IDENTIFICATION BASED FUNCTIONS
+# ;============================================================================================================================
+
 def sysDetect(**sdopt):
     """
     Inherited From EccoPY
-    
+
     sdopt
     ---------------------
     printResult(Bool) Def: False
             |________True = Prints Results
             |________False = pass
-    
+
     :return:
     """
     # sdopt
@@ -759,7 +787,7 @@ class GF_MATH_CONVERT_FROM_LIST(object):
     Functions Available
     -------------------
     hextoint() = Converts hex to int from list
-    
+
     '''
     def __init__(self):
         pass
@@ -924,7 +952,7 @@ class GF_MAPPING(object):
 class GF_INIT(object):
     """
     Gull Framework Root class
-    
+
     Functions Available
     -------------------
     self.enable_assembly_mode(Bool) Def: True
@@ -939,17 +967,17 @@ class GF_INIT(object):
     self.no_print(Bool) Def: True
                 |______True = Disables the Gull Framework Ascii Art print
                 |______False = Enables
-                
+
     """
     def __init__(self, **kwargs):
         # KWARGS_BOOLEANS
         self.enable_assembly_mode = kwargs.get("assembly_mode", True)
         self.init_all_classes = kwargs.get("init_all", False)  # ;Runs all initilized classes
         self.load_all_palm_trees = kwargs.get("load_all_palm_trees", False)  # ;Loads all "Palm Trees"
-        self.no_start_print = kwargs.get("no_print", True)
+        self.no_start_print = kwargs.get("no_print", False)
         #   CODE
         if self.no_start_print is not True:
-            p("\nGull Framework\n\t\t\tBy SeagullinSeagulls\n\t\t\t\tCode: https://github.com/SeagullisLearningToCode/Gull-Framework (Might be outdated)\n\nBELOW HERE MIGHT BE PALM TREES\n------------------------------------------------------------------------------------------------------------")
+            p(f"\nGull Framework v:{GF_VERSION}\n\tBy SeagullinSeagulls\n\t\tCode: https://github.com/SeagullisLearningToCode/Gull-Framework (Might be outdated)\n\nBELOW HERE MIGHT BE PALM TREES\n------------------------------------------------------------------------------------------------------------")
         if self.init_all_classes is True:
             if self.enable_assembly_mode is True:
                 self.m = GF_MAPPING()
