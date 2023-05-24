@@ -2,7 +2,7 @@
  __                     ___  __              ___       __   __
 / _` |  | |    |       |__  |__)  /\   |\/| |__  |  | /  \ |__) |__/   / -- --
 \__> \__/ |___ |___    |    |  \ /~~\  |  | |___ |/\| \__/ |  \ |  \  /    ______
-                                                    Version: 1.016d
+                                                    Version: 1.016e
 ````
 
 The Framework that makes python faster to code
@@ -29,4 +29,4 @@ makeBox("Hello, Gull!")
 Documentation is also in the code itself
 
 # Usage in my code
-It's free to use for now (don't worry I won't make it proprietary)
+It's free to use for now (don't worry I won't make it Closed-Source)
