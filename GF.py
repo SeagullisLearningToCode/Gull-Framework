@@ -2,7 +2,7 @@
  __                     ___  __              ___       __   __
 / _` |  | |    |       |__  |__)  /\   |\/| |__  |  | /  \ |__) |__/   / -- --
 \__> \__/ |___ |___    |    |  \ /~~\  |  | |___ |/\| \__/ |  \ |  \  /    ______
-                                                    Version: 1.016d
+                                                    Version: 1.016e
 
 This file stores very simple functions with the sole purpose of de-bloating the Main.py file (used to be)
 This file is also makes stating certain things faster and possibly easier.
@@ -434,7 +434,7 @@ def hexValFromFile(dirname: str,
     pat.close()  # ;Prevents memory leakage
     r = dat.split(' ')
     if orf is True:
-        if dtn == void_names[0] or void_names[0].upper() or void_names[1] or void_names[1].upper() or void_names[2]:
+        if dtn in [void_names[0], void_names[0].upper(), void_names[1], void_names[1].upper(), void_names[2]]:
             pass
         else:
             if os.path.exists(dtn) is False:  # ;if directory doesn't exist then create it
@@ -457,7 +457,7 @@ def hexValFromFile(dirname: str,
         real_hex_value = translator
         res.append(real_hex_value)
     if orf is True:
-        if dtn == void_names[0] or void_names[0].upper() or void_names[1] or void_names[1].upper() or void_names[2]:
+        if dtn in [void_names[0], void_names[0].upper(), void_names[1], void_names[1].upper(), void_names[2]]:
             pass
             if os.path.exists(f"{dtn}{fn}") is False:
                 destfile = open(f"{dtn}{fn}", "w+")
@@ -866,7 +866,7 @@ class GF_DEVLOG(object):
 
     def RECORD_CONSOLE(self, what):
         # CODE
-        if what is not sys.stderr or sys.stdout or sys.stdin:
+        if not what in [sys.stderr, sys.stdout, sys.stdin]:
             p(f"Gull: ARGUMENT OF RECORD WHICH IS {what} ISN'T 'sys.stderr', 'sys.stdout OR 'sys.stdin'\n SOLUTION: Try changing 'what' to one of those options")
             raise ValueError
         if os.path.exists(f"/Users/{self.gun}{self.fp}") is False:
