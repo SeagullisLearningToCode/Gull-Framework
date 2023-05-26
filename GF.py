@@ -42,26 +42,113 @@ GF_XTN_FOLDER_PATH = f"{GF_FILE_PATH}/EXT/"
 # ;PRINT BASED FUNCTIONS
 # ;============================================================================================================================
 
-def p(t="passed", **kwargs):
+def p(t=f"passed {choice(['Record Player', 'Gameboy', 'Tea'])}", **kwargs):
     """
-    Print
     Make print statements faster than python's print("Hello World")
 
     kwargs
     --------------------
     condition(Bool) Def: None
-            |_____Prints statement if refrenced Boolean is True
+            |_____Prints statement if refrenced Boolean is True, unless you use 'value'
+    value(Bool) Def: Conditional
+        |_____Defaults to True if 'condition' is passed, unless you change this argument to false
 
-    Example: p("Hello World")
-    Output: Hello World
+    Examples
+
+    p("Hello World") <-- Prints "Hello World"\n
+    p(cond=False, value=True) <-- Prints default value if False is True\n
+    p("Hello World", cond="Tea", compare='c', value="Record Player) <-- Prints "Hello World" if Tea has Record Player is in the word Tea\n
     """
     # KWARGS
     condition = kwargs.get("cond", None)
     # CODE
-    if condition is not None and type(condition) is bool:
-        if condition is True:
+    if condition is not None:
+        if type(condition) is bool:
+            changeCValue = kwargs.get("value", True)
+        elif type(condition) is int:
+            changeCValue = kwargs.get("value", 0)
+        elif type(condition) is float:
+            changeCValue = kwargs.get("value", float(0))
+        elif type(condition) is str:
+            changeCValue = kwargs.get("value", "Hello, Gull!")
+    if type(condition) is bool and type(changeCValue) is bool:
+        # ; e = equal
+        # ; ne = not equal
+        compare_int = kwargs.get("compare", "e") # ;Equals to (if condition == value)
+        if compare_int == "ne":
+            if condition is not changeCValue:
+                print(t)
+        elif condition is changeCValue:
             print(t)
-    else:
+    elif type(condition) is int and type(changeCValue) is int:
+        # ; e = equals
+        # ; gt = Greater than
+        # ; gte = Greater than or Equals to
+        # ; lt = Less than
+        # ; lte = Less than or Equals to
+        # ; ne = Not equal to
+        compare_int = kwargs.get("compare", "e") # ;Equals to (if condition == value)
+        if compare_int == "e":
+            if condition == changeCValue:
+                print(t)
+        elif compare_int == "gt":
+            if condition > changeCValue:
+                print(t)
+        elif compare_int == "gte":
+            if condition >= changeCValue:
+                print(t)
+        elif compare_int == "lt":
+            if condition < changeCValue:
+                print(t)
+        elif compare_int == "lte":
+            if condition <= changeCValue:
+                print(t)
+        elif compare_int == "ne":
+            if condition != changeCValue:
+                print(t)
+    elif type(condition) is float and type(changeCValue) is float:
+        # ; e = equals
+        # ; gt = Greater than
+        # ; gte = Greater than or Equals to
+        # ; lt = Less than
+        # ; lte = Less than or Equals to
+        # ; ne = Not equal to
+        compare_int = kwargs.get("compare", "e") # ;Equals to (if condition == value)
+        if compare_int == "e":
+            if condition == changeCValue:
+                print(t)
+        elif compare_int == "gt":
+            if condition > changeCValue:
+                print(t)
+        elif compare_int == "gte":
+            if condition >= changeCValue:
+                print(t)
+        elif compare_int == "lt":
+            if condition < changeCValue:
+                print(t)
+        elif compare_int == "lte":
+            if condition <= changeCValue:
+                print(t)
+        elif compare_int == "ne":
+            if condition != changeCValue:
+                print(t)
+        # ;if condition == changeCValue:
+        # ;    print(t)
+    elif type(condition) is str and type(changeCValue) is str:
+        # ; e = equal
+        # ; ne = not equal
+        # ; c = contains
+        compare_int = kwargs.get("compare", "e") # ;Equals to (if condition == value)
+        if compare_int == "e":
+            if condition == changeCValue:
+                print(t)
+        elif compare_int == "ne":
+            if condition != changeCValue:
+                print(t)
+        elif compare_int == "c":
+            if condition.__contains__(changeCValue):
+                print(t)
+    if condition is None:
         print(t)
 
 def sps(t: str, **sargs):
@@ -130,78 +217,237 @@ def sps(t: str, **sargs):
                 p(f"{replacePassed} {t}")
     else:
         p(f"passed {t}")
+def p(t=f"passed {choice(['Record Player', 'Gameboy', 'Tea'])}", **kwargs):
+    """
+    Make print statements faster than python's print("Hello World")
 
-def makeBox(what: str, **mdbk):
-    '''
+    kwargs
+    --------------------
+    condition(Bool) Def: None
+            |_____Prints statement if refrenced Boolean is True, unless you use 'value'
+    value(Bool) Def: Conditional
+        |_____Defaults to True if 'condition' is passed, unless you change this argument to false
+
+
+    Examples
+
+    p("Hello World") <-- Prints "Hello World"\n
+    p(cond=False, value=True) <-- Prints default value if False is True\n
+    p("Hello World", cond="Tea", compare='c', value="Record Player) <-- Prints "Hello World" if Tea has Record Player is in the word Tea\n
+    """
+    # KWARGS
+    condition = kwargs.get("cond", None)
+    # CODE
+    if condition is not None:
+        if type(condition) is bool:
+            changeCValue = kwargs.get("value", True)
+        elif type(condition) is int:
+            changeCValue = kwargs.get("value", 0)
+        elif type(condition) is float:
+            changeCValue = kwargs.get("value", float(0))
+        elif type(condition) is str:
+            changeCValue = kwargs.get("value", "Hello, Gull!")
+    if type(condition) is bool and type(changeCValue) is bool:
+        # ; e = equal
+        # ; ne = not equal
+        compare_int = kwargs.get("compare", "e") # ;Equals to (if condition == value)
+        if compare_int == "ne":
+            if condition is not changeCValue:
+                print(t)
+        elif condition is changeCValue:
+            print(t)
+    elif type(condition) is int and type(changeCValue) is int:
+        # ; e = equals
+        # ; gt = Greater than
+        # ; gte = Greater than or Equals to
+        # ; lt = Less than
+        # ; lte = Less than or Equals to
+        # ; ne = Not equal to
+        compare_int = kwargs.get("compare", "e") # ;Equals to (if condition == value)
+        if compare_int == "e":
+            if condition == changeCValue:
+                print(t)
+        elif compare_int == "gt":
+            if condition > changeCValue:
+                print(t)
+        elif compare_int == "gte":
+            if condition >= changeCValue:
+                print(t)
+        elif compare_int == "lt":
+            if condition < changeCValue:
+                print(t)
+        elif compare_int == "lte":
+            if condition <= changeCValue:
+                print(t)
+        elif compare_int == "ne":
+            if condition != changeCValue:
+                print(t)
+    elif type(condition) is float and type(changeCValue) is float:
+        # ; e = equals
+        # ; gt = Greater than
+        # ; gte = Greater than or Equals to
+        # ; lt = Less than
+        # ; lte = Less than or Equals to
+        # ; ne = Not equal to
+        compare_int = kwargs.get("compare", "e") # ;Equals to (if condition == value)
+        if compare_int == "e":
+            if condition == changeCValue:
+                print(t)
+        elif compare_int == "gt":
+            if condition > changeCValue:
+                print(t)
+        elif compare_int == "gte":
+            if condition >= changeCValue:
+                print(t)
+        elif compare_int == "lt":
+            if condition < changeCValue:
+                print(t)
+        elif compare_int == "lte":
+            if condition <= changeCValue:
+                print(t)
+        elif compare_int == "ne":
+            if condition != changeCValue:
+                print(t)
+        # ;if condition == changeCValue:
+        # ;    print(t)
+    elif type(condition) is str and type(changeCValue) is str:
+        # ; e = equal
+        # ; ne = not equal
+        # ; c = contains
+        compare_int = kwargs.get("compare", "e") # ;Equals to (if condition == value)
+        if compare_int == "e":
+            if condition == changeCValue:
+                print(t)
+        elif compare_int == "ne":
+            if condition != changeCValue:
+                print(t)
+        elif compare_int == "c":
+            if condition.__contains__(changeCValue):
+                print(t)
+    if condition is None:
+        print(t)
+
+def make_box(t: str, **kwargs):
+    """
+    From old version
+    ____________________________________________________
     Make a printable box with text inside of it
+    I may need to touch this up a bit to except newlines
+    but you know how this code is made
 
-    mdbk
-    ---------------------------------------------
-    condition(bool)
-            |_________Print If condition is True
-
-    :param what:
-    :param mdbk:
+    :param t:
+    :param kwargs:
     :return:
-    '''
-    # str
-    s = what
-    ts = ""
-    # int
-    c = genIterList(9)  # ;Counter (this plays a big role in this function)
-    gl = len(s)
-    # mdbk
-    condition = mdbk.get("cond", None)
-    # code
-    for i in range(len(s) + 4 * 100):
-        if c[0] == 0:
-            ts += " "
-        else:
-            if not c[0] >= gl + 3 and c[1] == 0:
-                ts += "-"
-            else:
-                if c[1] == 0:
-                    ts += "\n"
-                elif not c[1] == 1:
-                    if c[2] == 0:
-                        ts += "|"
-                    elif c[2] == 1:
-                        if not c[3] == 1:
-                            ts += " "
-                            c[3] += 1
+    """
+    # KWARGS
+    condition = kwargs.get("cond", None)
+    cmp = kwargs.get("compare", "e")
+    changeCValue = kwargs.get("value")
+    _return = kwargs.get("_return", False)
+    # STR
+    output = ""
+    # INT
+    new_line_count = len(t.split("\n"))
+    c = generate_list(9)
+    gl = len(t) # ; For compat.
+    # LIST
+    new_line_list = []
+    lines = [lol for lol in [len(l) for l in t.split("\n")]]
+    lines_writable = [x for x in range(new_line_count)]
+    lines_str = [ls for ls in t.split("\n")]
+    # CODE
+
+    if condition is not None:
+        if type(condition) is bool:
+            changeCValue = kwargs.get("value", True)
+        elif type(condition) is int:
+            changeCValue = kwargs.get("value", 0)
+        elif type(condition) is float:
+            changeCValue = kwargs.get("value", float(0))
+        elif type(condition) is str:
+            changeCValue = kwargs.get("value", "Hello, Gull!")
+
+    if t.__contains__("\n"):
+        for l in range(new_line_count+2):
+            new_line_list.append("")
+        for i in range(len(new_line_list)): # ;here we go
+            for n in range(len(new_line_list)):
+                if n in [0, len(new_line_list)-1] and c[0] != 1:
+                    for d in range(lines[0]+2): # ; Grab the largest line
+                        if d == lines[0]+2:
+                            pass # ;new_line_list[n] += "\n"
                         else:
-                            if not c[4] >= gl and c[2] == 1:
-                                ts += s[c[4]]
-                            c[4] += 1
-                            if c[4] >= gl and c[2] == 1 and c[5] == 0:
-                                if c[6] == 0:
-                                    ts += " "
-                                    c[6] += 1
-                                if c[6] == 1:
-                                    ts += "|"
-                                    c[6] += 1
-                                if c[6] == 2:
-                                    ts += "\n"
-                                    c[5] += 1
-                    elif c[2] >= 2:
-                        if c[7] == 0:
-                            ts += " "
-                        elif not c[7] >= gl + 3 and not c[8] == 1:
-                            ts += "-"
-                        elif c[7] >= gl + 3:
-                            break
-                        c[7] += 1
-                    if not c[2] == 1:
-                        c[2] += 1
-                    elif c[5] == 1 and not c[2] == 2:
-                        c[2] += 1
-                c[1] += 1
-        c[0] += 1
-    if type(condition) is bool:
-        if condition is True:
-            sps("", rp=ts, condition=condition)
+                            if d == 0:
+                                new_line_list[n] += " "
+                            new_line_list[n] += "-"
+                        c[3] = len(new_line_list[n])
+                    if n == len(new_line_list)-1:
+                        c[0] = 1
+                elif c[1] != 1 and c[0] == 1:
+                    for line in lines_writable:
+                        new_line_list[line+1] = f"| {lines_str[line]}"
+                        if c[2] != 1:
+                            for add_space in range(lines[0]+3-len(new_line_list[line+1])):
+                                if add_space != lines[0]+2-len(new_line_list[line+1]):
+                                    new_line_list[line+1] += " "
+                                else:
+                                    new_line_list[line+1] += " |"
+                            c[2] = 1
+                        else:
+                            for add_space in range(c[3]-len(f"| {lines_str[line]}")):
+                                if add_space != c[3]-len(f"| {lines_str[line]}")-1:
+                                    new_line_list[line+1] += " "
+                                else:
+                                    new_line_list[line+1] += " |"
+                    c[1] = 1
+        for line in new_line_list:
+            output += line+"\n"
     else:
-        p(ts)
+        for i in range(len(t) + 4 * 100):
+            if c[0] == 0:
+                output += " "
+            else:
+                if not c[0] >= gl + 3 and c[1] == 0:
+                    output += "-"
+                else:
+                    if c[1] == 0:
+                        output += "\n"
+                    elif not c[1] == 1:
+                        if c[2] == 0:
+                            output += "|"
+                        elif c[2] == 1:
+                            if not c[3] == 1:
+                                output += " "
+                                c[3] += 1
+                            else:
+                                if not c[4] >= gl and c[2] == 1:
+                                    output += t[c[4]]
+                                c[4] += 1
+                                if c[4] >= gl and c[2] == 1 and c[5] == 0:
+                                    if c[6] == 0:
+                                        output += " "
+                                        c[6] += 1
+                                    if c[6] == 1:
+                                        output += "|"
+                                        c[6] += 1
+                                    if c[6] == 2:
+                                        output += "\n"
+                                        c[5] += 1
+                        elif c[2] >= 2:
+                            if c[7] == 0:
+                                output += " "
+                            elif not c[7] >= gl + 3 and not c[8] == 1:
+                                output += "-"
+                            elif c[7] >= gl + 3:
+                                break
+                            c[7] += 1
+                        if not c[2] == 1:
+                            c[2] += 1
+                        elif c[5] == 1 and not c[2] == 2:
+                            c[2] += 1
+                    c[1] += 1
+            c[0] += 1
+    p(output, cond=condition, compare=cmp, value=changeCValue)
 
 def flp(l: dict, **kwargs):
     """
