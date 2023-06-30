@@ -2,7 +2,7 @@
  __                     ___  __              ___       __   __
 / _` |  | |    |       |__  |__)  /\   |\/| |__  |  | /  \ |__) |__/   / -- --
 \__> \__/ |___ |___    |    |  \ /~~\  |  | |___ |/\| \__/ |  \ |  \  /    ______
-                                                    Version: 1.016e
+                                                    Version: 1.017
 
 This file stores very simple functions with the sole purpose of de-bloating the Main.py file (used to be)
 This file is also makes stating certain things faster and possibly easier.
@@ -22,7 +22,8 @@ from configparser import *
 
 # ;VARIABLES-------------------------------------------------------------------------------------------------------------------
 # ;GULL FRAMEWORK
-GF_VERSION = "1.016d"
+GF_VERSION = "1.017"
+GF_EDITION = "Main"
 # ;Pygame
 load = mixer.music
 
@@ -370,12 +371,13 @@ def make_box(t: str, **kwargs):
     if t.__contains__("\n"):
         for l in range(new_line_count+2):
             new_line_list.append("")
+        biggest_line = lines.index(max(lines)) # ; Accuratly determine what is the biggest line
         for i in range(len(new_line_list)): # ;here we go
             for n in range(len(new_line_list)):
                 if n in [0, len(new_line_list)-1] and c[0] != 1:
-                    for d in range(lines[0]+2): # ; Grab the largest line
-                        if d == lines[0]+2:
-                            pass # ;new_line_list[n] += "\n"
+                    for d in range(lines[biggest_line]+2): # ; Grab the largest line, this line builds the top line
+                        if d == lines[biggest_line]+2:
+                            pass
                         else:
                             if d == 0:
                                 new_line_list[n] += " "
@@ -387,8 +389,8 @@ def make_box(t: str, **kwargs):
                     for line in lines_writable:
                         new_line_list[line+1] = f"| {lines_str[line]}"
                         if c[2] != 1:
-                            for add_space in range(lines[0]+3-len(new_line_list[line+1])):
-                                if add_space != lines[0]+2-len(new_line_list[line+1]):
+                            for add_space in range(len(lines_str[biggest_line][len(lines_str[line]):])+1):
+                                if add_space != len(lines_str[biggest_line][len(lines_str[line]):]):
                                     new_line_list[line+1] += " "
                                 else:
                                     new_line_list[line+1] += " |"
@@ -400,6 +402,8 @@ def make_box(t: str, **kwargs):
                                 else:
                                     new_line_list[line+1] += " |"
                     c[1] = 1
+                elif c[1] == 1:
+                    break
         for line in new_line_list:
             output += line+"\n"
     else:
@@ -1013,16 +1017,86 @@ def sysDetect(**sdopt):
     printResult = sdopt.get("getResults", False)
     # code
     p("Detecting Operating System and Hardware...")
-    compinfo = {
-        "Machine".lower(): pt.machine(),
-        "System".lower(): pt.system(),
-        "OS".lower(): pt.platform(),
-        "CPU".lower(): pt.processor(),
-        "Username".lower(): gp.getuser(),
-    }
-    if printResult is True:
-        flp(compinfo)
-
+    if moreInfo:
+        if sys.platform.startswith("win32") or sys.platform.startswith("cygwin"):
+            extra_info = [info for info in os.environ]
+            compinfo = {
+                # ;Hardware
+                "Machine".lower(): pt.machine(),
+                "CPU".lower(): pt.processor(),
+                # ;Software
+                "System".lower(): pt.system(),
+                "Version".lower(): f"Short: {pt.release()}, Full: {pt.platform()}",
+                "Edition".lower(): pt.win32_edition(),
+                # ;"DE".lower(): os.environ.get("desktop_session".upper()),
+                # ;User
+                "Username".lower(): gp.getuser(),
+                # ;Python
+                "Python_Build".lower(): pt.python_build(),
+                "Python_Compiler".lower(): pt.python_compiler(),
+                "Python_Release".lower(): pt.python_branch(),
+                "Python_Version".lower(): pt.python_version(),
+                # ;Gull Framework
+                "Gull_Framework_Version".lower(): GF_VERSION,
+                "Gull_Framework_Edition".lower(): GF_EDITION
+            }
+        elif sys.platform.startswith("darwin"):
+            extra_info = [info for info in os.uname()]
+            compinfo = {
+                # ;Hardware
+                "Machine".lower(): extra_info[4],
+                "CPU".lower(): pt.processor(),
+                # ;Software
+                "System".lower(): pt.mac_ver()[0],
+                "KernelVersion".lower(): extra_info[2],
+                "KernalVersionExtended".lower(): extra_info[3],
+                "DE".lower(): "Aqua",
+                # ;User
+                "NodeName".lower(): extra_info[1],
+                "Username".lower(): gp.getuser(),
+                # ;Python
+                "Python_Build".lower(): pt.python_build(),
+                "Python_Compiler".lower(): pt.python_compiler(),
+                "Python_Release".lower(): pt.python_branch(),
+                "Python_Version".lower(): pt.python_version(),
+                # ;Gull Framework
+                "Gull_Framework_Version".lower(): GF_VERSION,
+                "Gull_Framework_Edition".lower(): GF_EDITION
+            }
+        else:
+            extra_info = [info for info in os.uname()]
+            compinfo = {
+                # ;Hardware
+                "Machine".lower(): extra_info[4],
+                "CPU".lower(): pt.processor(),
+                # ;Software
+                "System".lower(): extra_info[0],
+                "KernelVersion".lower(): extra_info[2],
+                "Distro".lower(): extra_info[3],
+                "DE".lower(): os.environ.get("desktop_session".upper()),
+                # ;User
+                "NodeName".lower(): extra_info[1],
+                "Username".lower(): gp.getuser(),
+                # ;Python
+                "Python_Build".lower(): pt.python_build(),
+                "Python_Compiler".lower(): pt.python_compiler(),
+                "Python_Release".lower(): pt.python_branch(),
+                "Python_Version".lower(): pt.python_version(),
+                # ;Gull Framework
+                "Gull_Framework_Version".lower(): GF_VERSION,
+                "Gull_Framework_Edition".lower(): GF_EDITION
+            }
+    else:
+        compinfo = {
+            # ;Hardware
+            "Machine".lower(): pt.machine(),
+            "CPU".lower(): pt.processor(),
+            # ;Software
+            "System".lower(): pt.system(),
+            "OS".lower(): pt.platform(),
+            # ;User
+            "Username".lower(): gp.getuser(),
+        }
     return compinfo
 
 
