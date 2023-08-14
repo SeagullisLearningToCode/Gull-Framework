@@ -29,4 +29,4 @@ makeBox("Hello, Gull!")
 Documentation is also in the code itself
 
 # Usage in my code
-It's free to use for now (don't worry I won't make it Closed-Source)
+It's free to use for now
